@@ -27,6 +27,9 @@ def main():
     )
     print("")
 
+    lowest_cost, best_method = calculate_lowest_shipping_cost(weight)
+    print(f"The cheapest shipping method for {weight}lb is {best_method} at a cost of ${lowest_cost:.2f}.")
+
 
 if __name__ == "__main__":
     main()

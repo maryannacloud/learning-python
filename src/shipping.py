@@ -33,3 +33,20 @@ class ShippingCalculator:
 
         total_cost = weight * price_per_lb_drone
         return total_cost, price_per_lb_drone
+
+
+def calculate_lowest_shipping_cost(weight):
+    ground_cost, _, _ = ShippingCalculator.calculate_ground_shipping_cost(weight)
+    premium_cost = ShippingCalculator.calculate_premium_shipping_cost()
+    drone_cost, _, = ShippingCalculator.calculate_drone_shipping_cost(weight)
+
+    shipping_options = {
+        "Ground Shipping": ground_cost,
+        "Premium Ground Shipping": premium_cost,
+        "Drone Shipping": drone_cost
+    }
+
+    best_method = min(shipping_options, key=shipping_options.get)
+    lowest_cost = shipping_options[best_method]
+
+    return lowest_cost, best_method
